@@ -40,13 +40,13 @@ public class CatController {
   /**
    * Endpoint to get cats by name
    *
-   * @param key The name of the cat to search for
+   * @param q The name of the cat to search for
    * @return List of cats with the specified name
    */
-  @GetMapping("/cats/name")
-  public Object getCatsByName(@RequestParam String key) {
-    if (key != null) {
-      return catService.getCatsByName(key);
+  @GetMapping("/cats/search")
+  public Object getCatsByName(@RequestParam String q) {
+    if (q != null) {
+      return catService.getCatsByName(q);
     } else {
       return catService.getAllCats();
     }
