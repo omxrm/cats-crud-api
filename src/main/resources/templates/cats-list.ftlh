@@ -34,6 +34,7 @@
 
     <main class="container my-4">
         <header class="text-center hero">
+            <h1 class="display-6">Welcome to the UNCG Kitty Gallery</h1>
             <h1 class="display-6">${title}</h1>
             <p class="lead">Bringing you pictures of the cutest kittens out there!</p>
         </header>
@@ -61,7 +62,7 @@
                             <ul class="list-unstyled small mb-3">
                                 <li><strong>Age:</strong> ${cat.age} years</li>
                                 <li><strong>Breed:</strong>
-                                    <a href="/cats/category/${cat.breed}" class="text-decoration-none">${cat.breed}</a>
+                                    <a href="/cats/breed/${cat.breed}" class="text-decoration-none">${cat.breed}</a>
                                 </li>
                             </ul>
                             <a href="/cats/${cat.catId?c}" class="btn btn-primary">View Details</a>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Featured Cat — ${cat.name}</title>
+    <title>${cat.name} - Cat Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -31,7 +31,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-12 col-lg-10 col-xl-9">
                 <div class="card mb-3 shadow-lg border-0">
-                    <img src="https://cdn.hswstatic.com/gif/shutterstock-2428724909.jpg"
+                    <img src="${cat.imgUrl!'/images/default-cat.jpg'}"
                         class="card-img-top detail-img rounded-top" alt="${cat.name}">
                     <div class="card-body">
                         <h5 class="card-title">Description</h5>

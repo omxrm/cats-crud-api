@@ -29,6 +29,8 @@
     <main class="container my-4">
         <h1 class="text-center mb-4">Edit Cat: ${cat.name}</h1>
         <form action="/cats/update/${cat.catId?c}" method="post">
+            <input type="hidden" name="catId" value="${cat.catId?c}">
+
             <div class="mb-3">
                 <label class="form-label" for="name">Name</label>
                 <input class="form-control" id="name" name="name" type="text" value="${cat.name}" required>
@@ -38,8 +40,8 @@
                 <input class="form-control" id="breed" name="breed" type="text" value="${cat.breed}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="dob">Date of Birth</label>
-                <input class="form-control" id="dob" name="dob" type="date" required>
+                <label class="form-label" for="dob">Age</label>
+                <input class="form-control" id="age" name="age" type="number" value="${cat.age}" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="imgUrl">Image URL</label>

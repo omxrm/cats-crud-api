@@ -38,16 +38,16 @@
                 <input class="form-control" id="breed" name="breed" type="text" required>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="dob">Date of Birth</label>
-                <input class="form-control" id="dob" name="dob" type="date" required>
+                <label class="form-label" for="age">Age</label>
+                <input class="form-control" id="age" name="age" type="number" min="0" step="1" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="imgUrl">Image URL</label>
                 <input class="form-control" id="imgUrl" name="imgUrl" type="url" placeholder="https://…">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="desc">Description</label>
-                <textarea class="form-control" id="desc" name="desc" rows="5"></textarea>
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="5"></textarea>
             </div>
 
             <button class="btn btn-primary" type="submit">Add Cat</button>

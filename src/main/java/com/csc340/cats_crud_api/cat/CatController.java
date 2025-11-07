@@ -20,7 +20,7 @@ public class CatController {
    *
    * @return List of all cats
    */
-  @GetMapping({"/cats", "/cats/"})
+  @GetMapping({ "/cats", "/cats/" })
   public String getAllCats(Model model) {
     model.addAttribute("catsList", catService.getAllCats());
     model.addAttribute("title", "All Cats");
@@ -91,15 +91,23 @@ public class CatController {
    * @return The added cat
    */
   @PostMapping("/cats")
-  public Object addCat(Cat cat) {
-    Cat newCat = catService.addCat(cat);
-    return "redirect:/cats/" + newCat.getCatId();
+  public Object addCat(Cat cat, Model model) {
+    try {
+      Cat newCat = catService.addCat(cat);
+      return "redirect:/cats/" + newCat.getCatId();
+    } catch (Exception e) {
+      model.addAttribute("error", "Failed to create cat: " + e.getMessage());
+      return "cats-create";
+    }
   }
+  // Cat newCat = catService.addCat(cat);
+  // return "redirect:/cats/" + newCat.getCatId();
+  // }
 
   /**
    * Endpoint to show the update form for a cat
    * 
-   * @param id The ID of the cat to update
+   * @param id  The ID of the cat to update
    * @param cat the model to add attributes to
    * @return The view name for the update form
    */
