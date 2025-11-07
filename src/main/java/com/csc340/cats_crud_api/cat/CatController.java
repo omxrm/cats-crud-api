@@ -1,16 +1,15 @@
 package com.csc340.cats_crud_api.cat;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import org.springframework.ui.Model;
+
+@Controller // MVC Controller
 public class CatController {
 
   @Autowired
@@ -21,34 +20,40 @@ public class CatController {
    *
    * @return List of all cats
    */
-  @GetMapping("/cats")
-  public Object getAllCats() {
-    return catService.getAllCats();
+  @GetMapping({"/cats", "/cats/"})
+  public String getAllCats(Model model) {
+    model.addAttribute("catsList", catService.getAllCats());
+    model.addAttribute("title", "All Cats");
+    return "cats-list"; // view name
   }
 
   /**
    * Endpoint to get a cat by ID
    *
    * @param id The ID of the cat to retrieve
-   * @return The cat with the specified ID
+   * @return The cat details view with the specified ID
    */
   @GetMapping("/cats/{id}")
-  public Cat getCatById(@PathVariable long id) {
-    return catService.getCatById(id);
+  public String getCatById(@PathVariable long id, Model model) {
+    model.addAttribute("cat", catService.getCatById(id));
+    model.addAttribute("title", "Cat #: " + id);
+    return "cat-details";
   }
 
   /**
    * Endpoint to get cats by name
    *
-   * @param q The name of the cat to search for
+   * @param name The name of the cat to search for
    * @return List of cats with the specified name
    */
   @GetMapping("/cats/search")
-  public Object getCatsByName(@RequestParam String q) {
-    if (q != null) {
-      return catService.getCatsByName(q);
+  public String getCatsByName(@RequestParam String name, Model model) {
+    if (name != null) {
+      model.addAttribute("catsList", catService.getCatsByName(name));
+      model.addAttribute("title", "Cats by Name: " + name);
+      return "cats-list";
     } else {
-      return catService.getAllCats();
+      return "redirect:/cats/";
     }
   }
 
@@ -59,8 +64,24 @@ public class CatController {
    * @return List of cats with the specified breed
    */
   @GetMapping("/cats/breed/{breed}")
-  public Object getCatsByBreed(@PathVariable String breed) {
-    return catService.getCatsByBreed(breed);
+  public Object getCatsByBreed(@PathVariable String breed, Model model) {
+    model.addAttribute("catsList", catService.getCatsByBreed(breed));
+    model.addAttribute("title", "Cats by Breed: " + breed);
+    return "cats-list";
+  }
+
+  /**
+   * Endpoint to show the create form for a new cat
+   * 
+   * @param model The model to add attributes to
+   * @return The view name for the create form
+   */
+  @GetMapping("/cats/createForm")
+  public Object showCreateForm(Model model) {
+    Cat cat = new Cat();
+    model.addAttribute("cats", cat);
+    model.addAttribute("title", "Create New Cat");
+    return "cats-create";
   }
 
   /**
@@ -70,8 +91,9 @@ public class CatController {
    * @return The added cat
    */
   @PostMapping("/cats")
-  public Object addCat(@RequestBody Cat cat) {
-    return catService.addCat(cat);
+  public Object addCat(Cat cat) {
+    Cat newCat = catService.addCat(cat);
+    return "redirect:/cats/" + newCat.getCatId();
   }
 
   /**
@@ -81,10 +103,10 @@ public class CatController {
    * @param cat The updated cat information
    * @return The updated cat
    */
-  @PutMapping("/cats/{id}")
-  public Cat updateCat(@PathVariable Long id, @RequestBody Cat cat) {
+  @PostMapping("/cats/update/{id}")
+  public Object updateCat(@PathVariable Long id, Cat cat) {
     catService.updateCat(id, cat);
-    return catService.getCatById(id);
+    return "redirect:/cats/" + id;
   }
 
   /**
@@ -93,9 +115,9 @@ public class CatController {
    * @param id The ID of the cat to delete
    * @return List of all cats
    */
-  @DeleteMapping("/cats/{id}")
+  @GetMapping("/cats/delete/{id}")
   public Object deleteCat(@PathVariable Long id) {
     catService.deleteCat(id);
-    return catService.getAllCats();
+    return "redirect:/cats";
   }
 }
