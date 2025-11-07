@@ -41,7 +41,7 @@
         <!-- Search + Add button -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <form action="/cats/search" class="d-flex w-100 me-3">
-                <input name="q" class="form-control form-control-lg me-2" type="search"
+                <input name="name" class="form-control form-control-lg me-2" type="search"
                     placeholder="Search by breed or name" aria-label="Search">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
@@ -54,7 +54,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="card h-100 shadow-sm">
                         <img class="card-img-top"
-                            src="https://cfa.org/wp-content/uploads/2024/03/Sphynx_About_Tetsu.jpg" alt="${cat.name}">
+                            src="${cat.imgUrl! 'https://placekitten.com/640/420'}" alt="${cat.name}">
                         <div class="card-body">
                             <h5 class="card-title">${cat.name}</h5>
                             <p class="card-text"><em>${cat.breed}</em></p>

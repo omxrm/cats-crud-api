@@ -45,7 +45,7 @@
                         <hr class="my-3">
 
                         <div class="d-flex gap-2">
-                            <a class="btn btn-warning" href="/cats/updateForm/${cat.catId?c}">Edit Cat</a>
+                            <a class="btn btn-warning" href="/cats/update/${cat.catId?c}">Edit Cat</a>
                             <a class="btn btn-danger" href="/cats/delete/${cat.catId?c}"
                                 onclick="return confirm('Are you sure you want to delete ${cat.name}?')">Delete Cat</a>
                             <a class="btn btn-outline-secondary ms-auto" href="/cats">← Back to Gallery</a>

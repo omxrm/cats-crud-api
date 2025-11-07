@@ -97,6 +97,21 @@ public class CatController {
   }
 
   /**
+   * Endpoint to show the update form for a cat
+   * 
+   * @param id The ID of the cat to update
+   * @param cat the model to add attributes to
+   * @return The view name for the update form
+   */
+  @GetMapping("/cats/update/{id}")
+  public Object showUpdateForm(@PathVariable Long id, Model model) {
+    Cat cat = catService.getCatById(id);
+    model.addAttribute("cat", cat);
+    model.addAttribute("title", "Edit Cat: " + id);
+    return "cats-update";
+  }
+
+  /**
    * Endpoint to update a cat
    *
    * @param id  The ID of the cat to update

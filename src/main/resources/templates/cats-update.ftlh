@@ -27,32 +27,28 @@
     </nav>
 
     <main class="container my-4">
-        <h1 class="text-center mb-4">${title}</h1>
+        <h1 class="text-center mb-4">Edit Cat: ${cat.name}</h1>
         <form action="/cats/update/${cat.catId?c}" method="post">
             <div class="mb-3">
-                <label class="form-label" for="catId">Cat ID</label>
-                <input class="form-control" id="catId" name="catId" type="text" value="${cat.catId?c}" readonly>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="name">Name *</label>
+                <label class="form-label" for="name">Name</label>
                 <input class="form-control" id="name" name="name" type="text" value="${cat.name}" required>
             </div>
-
+            <div class="mb-3">
+                <label class="form-label" for="breed">Breed</label>
+                <input class="form-control" id="breed" name="breed" type="text" value="${cat.breed}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="dob">Date of Birth</label>
+                <input class="form-control" id="dob" name="dob" type="date" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="imgUrl">Image URL</label>
+                <input class="form-control" id="imgUrl" name="imgUrl" type="url" value="${cat.imgUrl!}" placeholder="https://…">
+            </div>
             <div class="mb-3">
                 <label class="form-label" for="description">Description *</label>
                 <textarea class="form-control" id="description" name="description" rows="5"
                     required>${cat.description}</textarea>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="breed">Breed</label>
-                <input class="form-control" id="breed" name="breed" type="text" value="${cat.breed}">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="age">Age (years)</label>
-                <input class="form-control" id="age" name="age" type="number" step="0.5" min="0" value="${cat.age}">
             </div>
 
             <button class="btn btn-primary" type="submit">Update Cat</button>

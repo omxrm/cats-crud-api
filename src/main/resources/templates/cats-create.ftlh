@@ -30,25 +30,24 @@
         <h1 class="text-center mb-4">${title}</h1>
         <form action="/cats" method="post">
             <div class="mb-3">
-                <label class="form-label" for="name">Name *</label>
+                <label class="form-label" for="name">Name</label>
                 <input class="form-control" id="name" name="name" type="text" required>
             </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="description">Description *</label>
-                <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
-            </div>
-
             <div class="mb-3">
                 <label class="form-label" for="breed">Breed</label>
-                <input class="form-control" id="breed" name="breed" type="text"
-                    placeholder="e.g., Persian, Siamese, Maine Coon">
+                <input class="form-control" id="breed" name="breed" type="text" required>
             </div>
-
             <div class="mb-3">
-                <label class="form-label" for="age">Age (years)</label>
-                <input class="form-control" id="age" name="age" type="number" step="0.5" min="0"
-                    placeholder="e.g., 3.5">
+                <label class="form-label" for="dob">Date of Birth</label>
+                <input class="form-control" id="dob" name="dob" type="date" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="imgUrl">Image URL</label>
+                <input class="form-control" id="imgUrl" name="imgUrl" type="url" placeholder="https://…">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="desc">Description</label>
+                <textarea class="form-control" id="desc" name="desc" rows="5"></textarea>
             </div>
 
             <button class="btn btn-primary" type="submit">Add Cat</button>

@@ -25,22 +25,27 @@ public class Cat {
     private String breed;
     private double age;
 
+    // @Column(name = "img_url")
+    private String imgUrl;
+
     public Cat() {
     }
 
-    public Cat(Long catId, String name, String description, String breed, double age) {
+    public Cat(Long catId, String name, String description, String breed, double age, String imgUrl) {
     this.catId = catId;
     this.name = name;
     this.description = description;
     this.breed = breed;
     this.age = age;
+    this.imgUrl = imgUrl;
   }
 
-  public Cat(String name, String description, String breed, double age) {
+  public Cat(String name, String description, String breed, double age, String imgUrl) {
     this.name = name;
     this.description = description;
     this.breed = breed;
     this.age = age;
+    this.imgUrl = imgUrl;
   }
 
   public Long getCatId() {
@@ -81,5 +86,13 @@ public class Cat {
 
   public void setAge(double age) {
     this.age = age;
+  }
+
+  public String getImgUrl() {
+    return imgUrl;
+  }
+
+  public void setImgUrl(String imgUrl) {
+    this.imgUrl = imgUrl;
   }
 }
